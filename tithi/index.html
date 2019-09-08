@@ -1,0 +1,61 @@
+<html>
+ <head>
+    <meta charset="UTF-8" />
+    <title>तिथयः</title>
+    <script src="suncalc.js"></script>
+</head>
+<body>
+<h1>Place - Bengaluru</h1>
+Date - <h2 id="date"></h2>
+सूर्योदयतिथि: - <h2 id="sunTithi"></h2>
+तात्कालिकी तिथि: - <h2 id="moonTithi"></h2>
+
+<script>
+        var tithiNames = ['प्रतिपदा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'अष्टमी', 'नवमी', 'दशमी', 'एकादशी', 'द्वादशी', 'त्रयोदशी', 'चतुर्दशी', 'पूर्णिमा', 'अमावस्या'];
+        var pakshaNames = ['शुक्ल', 'कृष्ण'];
+        function getTithi(date, lat, long) {
+            tithiResult = getRawTithi(date);
+            var sunTimes = SunCalc.getTimes(date, lat, long);
+            var sunrise = getSunriseTime(date, lat, long);
+            if(date.getTime() < sunrise.getTime()) {
+                var tomorrow = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+                sunTimes = getSunriseTime(tomorrow, lat, long);
+            }
+            var sunTithi = getRawTithi(sunrise);
+            var result={};
+            result.sunTithi = sunTithi;
+            result.moonTithi = tithiResult;
+            return result;
+        };
+        function getRawTithi(date) {
+            i=SunCalc.getMoonIllumination(date); 
+            tithiNum = Math.floor(i.fraction * (i.phase < 0.5 ? 1 : -1) * 15);
+            var result = {};
+            if(tithiNum < 0) {
+                result.paksha = pakshaNames[1];
+                if(tithiNum == -15) {
+                    tithiNum = 16;
+                }
+            } else {
+                result.paksha = pakshaNames[0];
+            }
+            tithiNum = Math.abs(tithiNum);
+            result.tithi = tithiNames[tithiNum - 1];
+            return result;
+        };
+        function getSunriseTime(date, lat, long) {
+            var sunTimes = SunCalc.getTimes(date, lat, long);
+            var sunrise = new Date(sunTimes.sunrise.getTime() + ((sunTimes.sunriseEnd.getTime() - 
+            sunTimes.sunrise.getTime())/2));
+            return sunrise;
+        }
+        setInterval(function() {
+            var d = new Date();
+            var t = getTithi(d, 12.9716, 77.5946);
+            document.getElementById("date").innerText = d;
+            document.getElementById("sunTithi").innerText = t.sunTithi.paksha + " " + t.sunTithi.tithi;
+            document.getElementById("moonTithi").innerText = t.moonTithi.paksha + " " + t.moonTithi.tithi;
+        }, 1000);
+    </script>
+</body>
+</html>
