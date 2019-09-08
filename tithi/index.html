@@ -18,8 +18,8 @@ Date - <h2 id="date"></h2>
             var sunTimes = SunCalc.getTimes(date, lat, long);
             var sunrise = getSunriseTime(date, lat, long);
             if(date.getTime() < sunrise.getTime()) {
-                var tomorrow = new Date(date.getTime() + 24 * 60 * 60 * 1000);
-                sunTimes = getSunriseTime(tomorrow, lat, long);
+                var yesterday = new Date(date.getTime() - 24 * 60 * 60 * 1000);
+                sunTimes = getSunriseTime(yesterday, lat, long);
             }
             var sunTithi = getRawTithi(sunrise);
             var result={};
