@@ -3,11 +3,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style type="text/css">
-      #main {width: 100%;}
+      #main {width: 100vw; height:90vw;}
       #prevBtn { float: left; height: 100%;}
       #nextBtn { float: right; height: 100%;}
       #shlokaDivs { clear: none; height: 100%; width:100%;}
-      #shlokaDivs p { display: none; }
+      #shlokaDivs p { display: none; }      
+      #aux { width: 100vw; height: 10vw;}
+      #countDiv { font-size: 2rem; text-align: center; width:100%;}
     </style>
     <script>
       
@@ -46,8 +48,8 @@
       </div>
     </div>
     <div id="aux">
-      <div id="countDiv"></div>
       <button id="resetBtn" onclick="reset">Reset</button>
+      <div id="countDiv"></div>
     </div>
   </body>
 </html>
