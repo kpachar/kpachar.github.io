@@ -1,10 +1,46 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style type="text/css">
+      #prevBtn { float: left; height: 100%;}
+      #nextBtn { float: right; height: 100%;}
+      #shlokaDivs { clear: none; height: 100%; width:100%;}
+      #shlokaDivs p { display: none; }
+    </style>
+    <script>
+      
+      const next = function() {
+      //  window.localStorage.setItem(
+      }
+    </script>
   </head>
   <body>
     <button id="prevBtn" onclick="prev">Previous</button>
-    <div id="shlokaDiv"></div>
+    <div id="shlokaDivs">
+<pre id="s1">
+श्रीपूर्णबोधगुरुतीर्थपयोब्धिपारा कामारिमाक्षविषमाक्षशिरस्स्पृशन्ती 
+पूर्वोत्तरामिततरङ्गचरत्सुहंसा देवालिसेवितपराङ्घ्रिपयोजलना 
+जीवेशभेदगुणपूर्तिजगत्सुसत्त्वनीचोच्चभावमुखनक्रगणैः समेता
+दुर्वाद्यजापतिगलैर्गुरुराघवेन्द्रावाग्देवतासरिदमुं विमलीकरोतु 
+</pre>
+<pre id="s2">   
+श्रीराघवेन्द्रः सकलप्रदाता स्वपादकञ्जद्वयभक्तिमद्भ्यः 
+अघाद्रिसम्भेदनदृष्टिवज्रः क्षमासुरेन्द्रोऽवतु मां सदाऽयं 
+</pre>
+<pre id="s3">
+श्रीराघवेन्द्रो हरिपादकञ्जनिषेवणालब्धसमस्तसम्पत् 
+देवस्वभावो दिविजद्रुमोऽयमिष्टप्रदो मे सततं स भूयात् 
+</pre>
+<pre id="s4">
+भव्यस्वरुपो भवदुःखतूलसङ्घाग्निचर्यःसुखधैर्यशाली 
+समस्तदुष्टग्रहनिग्रहेशो दुरत्ययोऽपप्लवसिन्धुसेतुः 
+</pre>
+<pre id="s5">
+निरस्तदोषो निरवद्यवेषः प्रत्यर्थिमूकत्वनिदानभाषः 
+विद्वत्परिज्ञेयमहाविशेषो वाग्वैखरीनिर्जितभव्यशेषः 
+</pre>  
+    </div>
     <button id="nextBtn" onclick="next">Next</button>
     <div id="countDiv"></div>
     <button id="resetBtn" onclick="reset">Reset</button>
