@@ -19,19 +19,19 @@
         <hr />
         Lat: <input type="text" id="lat0" value="12.971599" style="width: 8em;"/>
         Lon: <input type="text" id="lon0" value="77.594566" style="width: 8em;"/>
-        <button onclick="update(0)">Bengaluru</button>
+        <button id="btn0" onclick="update(0)">Bengaluru</button>
         <br/>
         Lat: <input type="text" id="lat1" value="15.0512778" style="width: 8em;"/>
         Lon: <input type="text" id="lon1" value="76.2098333" style="width: 8em;"/>
-        <button onclick="update(1)">Kadlabalu</button>
+        <button id="btn1" onclick="update(1)">Kadlabalu</button>
         <br/>
         Lat: <input type="text" id="lat2" value="15.139393"  style="width: 8em;"/>
         Lon: <input type="text" id="lon2" value="76.921440" style="width: 8em;"/>
-        <button onclick="update(2)">Ballari</button>
+        <button id="btn2" onclick="update(2)">Ballari</button>
         <br/>
         Lat: <input type="text" id="lat3" value="15.371598" style="width: 8em;"/>
         Lon: <input type="text" id="lon3" value="75.101166" style="width: 8em;"/>
-        <button onclick="update(3)">Hubli</button>
+        <button id="btn3" onclick="update(3)">Hubli</button>
     </body>
     <script>
         update = function (idx) {
@@ -55,7 +55,7 @@
                 hours = hours - 12
                 ampm = "PM"
             }
-            document.getElementById('dt').innerText = dt.getDate() + "/" + (sr.getMonth() + 1) + "/" + sr.getFullYear() + "   " + hours + ":" + dt.getMinutes() + " " + ampm
+            document.getElementById('dt').innerText = document.getElementById("btn"+idx).innerText + " " + dt.getDate() + "/" + (sr.getMonth() + 1) + "/" + sr.getFullYear() + "   " + hours + ":" + dt.getMinutes() + " " + ampm
             
         }
         update(0)
