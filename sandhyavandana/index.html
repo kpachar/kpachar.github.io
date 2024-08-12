@@ -7,7 +7,7 @@
         <h1 id="dt"></h1>
         
         <hr />
-        
+
         <h1 id="sunrise96"></h1>
         <h1 id="sunrise"></h1>
         
@@ -16,13 +16,21 @@
         <h1 id="sunset96"></h1>
         <h1 id="sunset"></h1>
         <hr />
-        Lat: <input type="text" id="lat" value="12.971599"/>
-        Lon: <input type="text" id="lon" value="77.594566"/>
-        <button onclick="update()">Update</button>
+        Lat: <input type="text" id="lat0" value="12.971599"/>
+        Lon: <input type="text" id="lon0" value="77.594566"/>
+        <button onclick="update(0)">Bengaluru</button>
+        <br/>
+        Lat: <input type="text" id="lat1" value="15.0512778"/>
+        Lon: <input type="text" id="lon1" value="76.2098333"/>
+        <button onclick="update(1)">Kadlabalu</button>
+        <br/>
+        Lat: <input type="text" id="lat2" value="15.139393"/>
+        Lon: <input type="text" id="lon2" value="76.921440"/>
+        <button onclick="update(2)">Ballari</button>
     </body>
     <script>
-        update = function () {
-            times = SunCalc.getTimes(new Date(), document.getElementById("lat").value, document.getElementById("lon").value)
+        update = function (idx) {
+            times = SunCalc.getTimes(new Date(), document.getElementById("lat" + idx).value, document.getElementById("lon" + idx).value)
             sr = times.sunrise
             ss = times.sunset
             sr96 = new Date(sr - 96*60*1000)
@@ -45,7 +53,7 @@
             document.getElementById('dt').innerText = dt.getDate() + "/" + (sr.getMonth() + 1) + "/" + sr.getFullYear() + "   " + hours + ":" + dt.getMinutes() + " " + ampm
             
         }
-        update()
+        update(0)
 
     </script>
 </html>
