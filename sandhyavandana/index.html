@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <script src="suncalc.js"></script>
+    </head>
+
+    <body>
+        <h1 id="dt"></h1>
+        
+        <hr />
+        
+        <h1 id="sunrise96"></h1>
+        <h1 id="sunrise"></h1>
+        
+        <hr />
+        
+        <h1 id="sunset96"></h1>
+        <h1 id="sunset"></h1>
+        <hr />
+        Lat: <input type="text" id="lat" value="12.971599"/>
+        Lon: <input type="text" id="lon" value="77.594566"/>
+        <button onclick="update()">Update</button>
+    </body>
+    <script>
+        update = function () {
+            times = SunCalc.getTimes(new Date(), document.getElementById("lat").value, document.getElementById("lon").value)
+            sr = times.sunrise
+            ss = times.sunset
+            sr96 = new Date(sr - 96*60*1000)
+            ss96 = new Date(ss - 96*60*1000)
+            sr_str = sr.getHours() + ":" + sr.getMinutes() + " AM"
+            sr96_str = sr96.getHours() + ":" + sr96.getMinutes() + " AM"
+            ss_str = (ss.getHours() - 12) + ":" + ss.getMinutes() + " PM"
+            ss96_str = (ss96.getHours() - 12) + ":" + ss96.getMinutes() + " PM"
+            document.getElementById('sunrise').innerText = sr_str
+            document.getElementById('sunrise96').innerText = sr96_str
+            document.getElementById('sunset').innerText = ss_str
+            document.getElementById('sunset96').innerText = ss96_str
+            dt = new Date()
+            hours = dt.getHours()
+            ampm = "AM"
+            if (dt.getHours() > 12) {
+                hours = hours - 12
+                ampm = "PM"
+            }
+            document.getElementById('dt').innerText = dt.getDate() + "/" + (sr.getMonth() + 1) + "/" + sr.getFullYear() + "   " + hours + ":" + dt.getMinutes() + " " + ampm
+            
+        }
+        update()
+
+    </script>
+</html>
