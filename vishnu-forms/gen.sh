@@ -1,0 +1,1 @@
+node generate_improved_svgs.js
